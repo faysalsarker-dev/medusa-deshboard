@@ -83,7 +83,7 @@ import type {
   MedusaResponse,
 } from "@medusajs/framework"
 import { IProductModuleService } from "@medusajs/framework/types"
-import { Modules } from "@medusajs/framework/utils"
+import { Modules } from ""
 
 export const GET = async (
   req: MedusaRequest,
