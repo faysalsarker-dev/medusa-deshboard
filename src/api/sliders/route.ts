@@ -6,7 +6,9 @@ import SliderModuleService from "src/modules/slider/service"
 
 export async function POST(req: MedusaRequest, res: MedusaResponse) {
     const sliderService: SliderModuleService = req.scope.resolve(SLIDER_MODULE)
+    console.log(req.body);
     const slider = await sliderService.createSliders(req.body)
+    console.log(slider);
     res.json(slider)
   }
 
@@ -17,19 +19,20 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
 }
 
 // export async function GET(req: MedusaRequest, res: MedusaResponse) {
-//   const sliderService = req.scope.resolve(SLIDER_MODULE)
-//   const slider = await sliderService.retrieveSlider(req.params.id)
+//   const sliderService: SliderModuleService = req.scope.resolve(SLIDER_MODULE)
+//   const slider = await sliderService.retrieve(req.params.id)
 //   res.json(slider)
 // }
 
-// export async function PUT(req: MedusaRequest, res: MedusaResponse) {
-//   const sliderService:SliderModuleService = req.scope.resolve(SLIDER_MODULE)
-//   const slider = await sliderService.updateSliders({
-//     id: req.params.id,
-//     ...req.body,
-//   })
-//   res.json(slider)
-// }
+export async function PUT(req: MedusaRequest, res: MedusaResponse) {
+  
+  const sliderService: SliderModuleService = req.scope.resolve(SLIDER_MODULE)
+  const slider = await sliderService.update(
+    req.params.id,
+    req.body 
+  )
+  res.json(slider)
+}
 
 export async function DELETE(req: MedusaRequest, res: MedusaResponse) {
   const sliderService:SliderModuleService = req.scope.resolve(SLIDER_MODULE)
